@@ -12,18 +12,22 @@ function Search() {
     const [books, setBooks] = useState([]);
     const [query, setQuery] = useState();
 
-    const handleInputChange = (event) => {
+    const handleInputChange = event => {
         const {search} = event.target;
-        const query = search.join("+");
-        setQuery(query);
+        setQuery(search);
     }
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        //console.log(query)
         API.search(query)
-            .then(res => setBooks(res.data))
+            .then(res => setBooks(res.data.items))
             .catch(err => console.log(err)); 
+            
     }
+
+    
     return (
         <div className="App">
         <Nav />
@@ -36,8 +40,8 @@ function Search() {
                                 <Col size="xs-9 sm-10">
                                     <Input 
                                     name="bookSearch"
-                                    value={query}
                                     onChange={handleInputChange}
+                                    value={query}
                                     />
                                 </Col>
                                 <Col size="xs-3 sm-2">
@@ -51,6 +55,7 @@ function Search() {
                             </Row>
                         </Container>
                    </Row>
+                   <br></br>
                    <Row>
                        <Col size="xs-12">
                            {!books.length ? (
@@ -60,10 +65,11 @@ function Search() {
                                    {books.map(book => {
                                        return (
                                            <BookItem
-                                            key={book.title}
-                                            title={book.title}
-                                            cover={book.cover}
-                                            description={book.description}
+                                            key={book.id}
+                                            title={book.volumeInfo.title}
+                                            author={book.volumeInfo.authors}
+                                            cover={book.volumeInfo.imageLinks.smallThumbnail}
+                                            description={book.volumeInfo.description}
                                             />
                                        )
                                    })}

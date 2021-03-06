@@ -4,8 +4,13 @@ import axios from 'axios';
 //const APIkey = process.env.APIkey;
 
 
+
 export default {
+    test: function() {
+        return axios.get("https://www.googleapis.com/books/v1/volumes?q=matilda&key=AIzaSyDeehm96IVTyladY-nStngaIu5JkGjoN_Y");
+    },
+
     search: function(query) {
-        return axios.get("https://www.googleapis.com/books/v1/volumes?&key=AIzaSyDeehm96IVTyladY-nStngaIu5JkGjoN_Y?&p=", {params: {q: query}});
+        return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=AIzaSyDeehm96IVTyladY-nStngaIu5JkGjoN_Y`)
     }
 }
