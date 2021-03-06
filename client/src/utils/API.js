@@ -10,7 +10,7 @@ export default {
         return axios.get("https://www.googleapis.com/books/v1/volumes?q=matilda&key=AIzaSyDeehm96IVTyladY-nStngaIu5JkGjoN_Y");
     },
 
-    search: function(query) {
+    searchBooks: function(query) {
         return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=AIzaSyDeehm96IVTyladY-nStngaIu5JkGjoN_Y`)
     }
 }

@@ -10,10 +10,10 @@ import BookList from '../BookList/BookList';
 
 function Search() {
     const [books, setBooks] = useState([]);
-    const [query, setQuery] = useState();
+    const [query, setQuery] = useState("");
 
     const handleInputChange = event => {
-        const {search} = event.target;
+        const {search} = event.target.value;
         setQuery(search);
     }
 
@@ -21,7 +21,7 @@ function Search() {
     const handleSubmit = (event) => {
         event.preventDefault();
         //console.log(query)
-        API.search(query)
+        API.searchBooks(query)
             .then(res => setBooks(res.data.items))
             .catch(err => console.log(err)); 
             
@@ -35,6 +35,9 @@ function Search() {
                 <Jumbotron />
                <Container>
                    <Row>
+                       <Col size="12">
+                       <form>
+
                         <Container>
                             <Row>
                                 <Col size="xs-9 sm-10">
@@ -42,6 +45,7 @@ function Search() {
                                     name="bookSearch"
                                     onChange={handleInputChange}
                                     value={query}
+                                    placeholder="Search for a book"
                                     />
                                 </Col>
                                 <Col size="xs-3 sm-2">
@@ -54,6 +58,8 @@ function Search() {
                                 </Col>
                             </Row>
                         </Container>
+                       </form>
+                       </Col>
                    </Row>
                    <br></br>
                    <Row>
