@@ -13,10 +13,11 @@ function Search() {
     const [query, setQuery] = useState("");
 
     const handleInputChange = event => {
-        const {search} = event.target.value;
+        const search = event.target.value;
+        //console.log(search)
+        //const searchFormat = search.split(" ").join("+");
         setQuery(search);
     }
-
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -27,7 +28,11 @@ function Search() {
             
     }
 
-    
+    const saveBook = (event) => {
+        event.preventDefault();
+        console.log('button works line 32')       
+    }
+
     return (
         <div className="App">
         <Nav />
@@ -37,7 +42,6 @@ function Search() {
                    <Row>
                        <Col size="12">
                        <form>
-
                         <Container>
                             <Row>
                                 <Col size="xs-9 sm-10">
@@ -74,8 +78,10 @@ function Search() {
                                             key={book.id}
                                             title={book.volumeInfo.title}
                                             author={book.volumeInfo.authors}
-                                            cover={book.volumeInfo.imageLinks.smallThumbnail}
+                                            cover={book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail}
                                             description={book.volumeInfo.description}
+                                            href={book.volumeInfo.previewLink}
+                                            onClick={saveBook}
                                             />
                                        )
                                    })}

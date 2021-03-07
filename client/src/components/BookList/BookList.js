@@ -8,7 +8,7 @@ export function BookList({children}) {
     return <ul className="list-group">{children}</ul>
 }
 
-export function BookItem({title, author, cover, description}) {
+export function BookItem({title, author, cover, description, href, saveBook}) {
     return (
         <li className="list-group-item">
             <Container>
@@ -20,6 +20,10 @@ export function BookItem({title, author, cover, description}) {
                     </Col>
                     <Col size="xs-8 sm-9">
                         <p>{description}</p>
+                    </Col>
+                    <Col size="xs-2 sm-1">
+                        <a  rel="noopener noreferrer" target="_blank" href={href} style={{marginBottom: ".5rem"}} type="button" className="btn btn-info">View on Google Books</a>
+                        <button onClick={saveBook} type="button" className="btn btn-primary">Save to My List</button>
                     </Col>
                 </Row>
             </Container>

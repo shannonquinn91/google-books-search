@@ -1,16 +1,19 @@
 import axios from 'axios';
 
-//Google Books API
-//const APIkey = process.env.APIkey;
+//const apiKey = axios.get('/APIkey');
 
-
-
-export default {
-    test: function() {
-        return axios.get("https://www.googleapis.com/books/v1/volumes?q=matilda&key=AIzaSyDeehm96IVTyladY-nStngaIu5JkGjoN_Y");
-    },
-
+const API = {
     searchBooks: function(query) {
         return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=AIzaSyDeehm96IVTyladY-nStngaIu5JkGjoN_Y`)
+    },
+
+    saveBook: function(book) {
+        return axios.get('/save', book)
+    },
+
+    myList: function() {
+        return axios.get('/myList')
     }
 }
+
+export default API;
