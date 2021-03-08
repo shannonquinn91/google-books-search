@@ -2,13 +2,7 @@ import React from 'react';
 import {Container, Row, Col} from '../Grid';
 import Cover from '../Cover/Cover';
 
-//Created a book list (container) and book item (for displaying book data)
-
-export function BookList({children}) {
-    return <ul className="list-group">{children}</ul>
-}
-
-export function BookItem({title, author, cover, description, href, saveBook}) {
+function SavedItem({title, author, cover, description, href, deleteBook}) {
     return (
         <li className="list-group-item">
             <Container>
@@ -23,7 +17,8 @@ export function BookItem({title, author, cover, description, href, saveBook}) {
                     </Col>
                     <Col size="xs-2 sm-1">
                         <a  rel="noopener noreferrer" target="_blank" href={href} style={{marginBottom: ".5rem"}} type="button" className="btn btn-info">View on Google Books</a>
-                        <button onClick={() => saveBook(title, author, cover, description, href)} type="button" className="btn btn-primary">Save to My List</button>
+                        <button onClick={deleteBook} type="button" className="btn btn-primary">Delete from My List</button>
+
                     </Col>
                 </Row>
             </Container>
@@ -31,4 +26,4 @@ export function BookItem({title, author, cover, description, href, saveBook}) {
     )
 }
 
-export default BookList;
+export default SavedItem;

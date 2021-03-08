@@ -8,7 +8,7 @@ const API = {
     },
 
     saveBook: function(book) {
-        return axios.get('/save', book)
+        return axios.post('/save', {data: book})
     },
 
     myList: function() {

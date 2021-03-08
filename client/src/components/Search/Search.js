@@ -28,9 +28,14 @@ function Search() {
             
     }
 
-    const saveBook = (event) => {
-        event.preventDefault();
-        console.log('button works line 32')       
+    const saveBook = (title, author, cover, description, href) => {
+        API.saveBook({
+            title,
+            authors: author,
+            description,
+            image: cover,
+            link: href
+        })       
     }
 
     return (
