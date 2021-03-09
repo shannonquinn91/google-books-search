@@ -8,11 +8,11 @@ const API = {
     },
 
     saveBook: function(book) {
-        return axios.post('/save', {data: book})
+        return axios.post('/api/save', {data: book})
     },
 
     myList: function() {
-        return axios.get('/myList')
+        return axios.get('/api/myList')
     }
 }
 
