@@ -14,8 +14,9 @@ function Saved() {
     useEffect(() => {
         API.myList()
             .then(res => setSaved(res.data))
-            .catch(err => console.log(err));
-    })
+            .catch(err => console.log(err))
+    }, [])
+    
 
     const deleteBook = () => {
         console.log("working")

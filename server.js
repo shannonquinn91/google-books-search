@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 //Connect to Mongo DB
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/googlebooks",
-  { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
+  { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false }
 );
 
 // Define API routes here
@@ -29,13 +29,13 @@ app.get("/APIkey", (req, res) => {
 
 // Send every other request to the React app
 // Define any API routes before this runs
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
-
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/public/index.html"));
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
+
+// app.get("/", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/public/index.html"));
+// });
 
 
 app.listen(PORT, () => {
