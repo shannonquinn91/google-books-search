@@ -23,7 +23,7 @@ export function BookItem({title, author, cover, description, href, saveBook}) {
                     </Col>
                     <Col size="xs-2 sm-1">
                         <a  rel="noopener noreferrer" target="_blank" href={href} style={{marginBottom: ".5rem"}} type="button" className="btn btn-info">View on Google Books</a>
-                        <button onClick={() => saveBook(title, author, cover, description, href)} type="button" className="btn btn-primary">Save to My List</button>
+                        <button onClick={saveBook} type="button" className="btn btn-primary">Save to My List</button>
                     </Col>
                 </Row>
             </Container>
@@ -32,3 +32,5 @@ export function BookItem({title, author, cover, description, href, saveBook}) {
 }
 
 export default BookList;
+
+//() => saveBook(title, author, cover, description, href)

@@ -11,6 +11,7 @@ import BookList from '../BookList/BookList';
 function Search() {
     const [books, setBooks] = useState([]);
     const [query, setQuery] = useState("");
+    const [saved, setSaved] = useState([]);
 
     const handleInputChange = event => {
         const search = event.target.value;
@@ -35,7 +36,9 @@ function Search() {
             description,
             image: cover,
             link: href
-        })       
+        })
+        .then(book => setSaved(book))
+        .then(console.log(saved))     
     }
 
     return (
@@ -86,7 +89,7 @@ function Search() {
                                             cover={book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail}
                                             description={book.volumeInfo.description}
                                             href={book.volumeInfo.previewLink}
-                                            onClick={saveBook}
+                                            saveBook={saveBook}
                                             />
                                        )
                                    })}

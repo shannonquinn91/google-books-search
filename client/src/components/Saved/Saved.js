@@ -12,10 +12,16 @@ function Saved() {
     const [saved, setSaved] = useState([]);
 
     useEffect(() => {
-        API.myList()
-            .then(res => setSaved(res.data))
-            .catch(err => console.log(err))
+        getList()
     }, [])
+    
+    const getList = async () => {
+        const list = await API.myList()
+        setSaved(list.data);
+    }
+    // API.myList()
+    //     .then(res => setSaved(res.data))
+    //     .catch(err => console.log(err))
     
 
     const deleteBook = () => {
@@ -37,7 +43,7 @@ function Saved() {
                                    {saved.map(book => {
                                        return(
                                            <SavedItem
-                                            key={book._id}
+                                            key={book.id}
                                             title={book.title}
                                             author={book.authors}
                                             cover={book.image}
